@@ -6,6 +6,7 @@ import treasurehunt.constant.Tool;
 import treasurehunt.map.Map;
 import treasurehunt.map.MapPosition;
 import treasurehunt.map.MapTile;
+import treasurehunt.search.priority.*;
 
 import javax.swing.text.html.HTMLDocument;
 import java.util.*;
@@ -36,24 +37,9 @@ public class MapSearch
             }
         }
 
-        PriorityQueue<TileReward> queue = new PriorityQueue<>();
-        Iterator iterator = unexplored.iterator();
-
-        int reward;
-
-        while(iterator.hasNext()) {
-            tile = (MapTile) iterator.next();
-            reward = numUnexploredTilesNearby(map, tile) / Heuristic.distance(map.getPlayer().getTile(), tile, map.getPlayer().getDirection());
-            queue.add(new TileReward(tile, reward));
-        }
-
-        MapTile[] tiles = new MapTile[queue.size()];
-
-        for(int i = 0; i < tiles.length; i++) {
-            tiles[i] = queue.poll().getTile();
-        }
-
-        return tiles;
+        UnexploredPT pt = new UnexploredPT(map);
+        pt.addTiles(unexplored);
+        return pt.toArray();
     }
 
     public static MapTile[] findCoastalTiles(Map map)
@@ -86,33 +72,9 @@ public class MapSearch
         // STEP 2: Priorities found targets.
         // Reward: (# of water tiles - # of explored tiles) + (# of adjacent zones - 1) / distance to target
 
-        PriorityQueue<TileReward> targetRewards = new PriorityQueue<>();
-        Iterator iterator = coastalTiles.iterator();
-
-        MapTile[] zoneTiles;
-        int numExplored, reward;
-
-        while (iterator.hasNext()) {
-            tile = (MapTile) iterator.next();
-            zoneTiles = tile.zoneTiles();
-            numExplored = 0;
-            for (MapTile zoneTile : zoneTiles) {
-                if (zoneTile.isExplored()) numExplored++;
-            }
-            reward = (zoneTiles.length - numExplored) + (tile.numAdjacentZones() - 1) / Heuristic.distance(map.getPlayer().getTile(), tile, map.getPlayer().getDirection());
-            targetRewards.add(new TileReward(tile, reward));
-        }
-
-        // STEP 3: Return as array of targets.
-
-        MapTile[] targets = new MapTile[targetRewards.size()];
-        iterator = targetRewards.iterator();
-
-        for (int i = 0; i < targets.length; i++) {
-            targets[i] = ((TileReward) iterator.next()).getTile();
-        }
-
-        return targets;
+        CoastalPT pt = new CoastalPT(map);
+        pt.addTiles(coastalTiles);
+        return pt.toArray();
     }
 
     public static MapTile[] findHabourTiles(Map map, MapTile start, boolean canEscape, boolean avoidTrees)
@@ -136,7 +98,6 @@ public class MapSearch
                 if(neighbour.isWater()) {
                     expanded.add(neighbour);
                     unexpanded.add(neighbour);
-                    continue;
                 }
                 else if(neighbour.getObstacle() == Obstacle.NONE
                      || (neighbour.getObstacle() == Obstacle.DOOR && map.getPlayer().hasTool(Tool.KEY))
@@ -150,28 +111,9 @@ public class MapSearch
 
         // STEP 2: Priorities found targets.
 
-        PriorityQueue<TileReward> targetRewards = new PriorityQueue<>();
-        Iterator iterator = harbourTiles.iterator();
-
-        int reward;
-
-        while (iterator.hasNext()) {
-            tile = (MapTile) iterator.next();
-            if(canEscape && !tile.zoneContainsTree()) continue;
-            reward = numUnexploredTilesNearby(map, tile);
-            targetRewards.add(new TileReward(tile, reward));
-        }
-
-        // STEP 3: Return as array of targets.
-
-        MapTile[] targets = new MapTile[targetRewards.size()];
-        iterator = targetRewards.iterator();
-
-        for (int i = 0; i < targets.length; i++) {
-            targets[i] = ((TileReward) iterator.next()).getTile();
-        }
-
-        return targets;
+        HarbourPT pt = new HarbourPT(map, canEscape);
+        pt.addTiles(harbourTiles);
+        return pt.toArray();
     }
     public static MapTile[] findHabourTiles(Map map, boolean canEscape, boolean avoidTrees)
     {
@@ -219,27 +161,9 @@ public class MapSearch
 
         // STEP 2: Priorities found targets.
 
-        PriorityQueue<TileReward> targetRewards = new PriorityQueue<>();
-        Iterator iterator = harbourTiles.iterator();
-
-        int reward;
-
-        while (iterator.hasNext()) {
-            tile = (MapTile) iterator.next();
-            reward = 1 / Heuristic.distance(map.getPlayer().getTile(), tile, map.getPlayer().getDirection());
-            targetRewards.add(new TileReward(tile, reward));
-        }
-
-        // STEP 3: Return as array of targets.
-
-        MapTile[] targets = new MapTile[targetRewards.size()];
-        iterator = targetRewards.iterator();
-
-        for (int i = 0; i < targets.length; i++) {
-            targets[i] = ((TileReward) iterator.next()).getTile();
-        }
-
-        return targets;
+        HomeHarbourPT pt = new HomeHarbourPT(map);
+        pt.addTiles(harbourTiles);
+        return pt.toArray();
     }
 
     public static MapTile[] findStoneTargets(Map map)
@@ -248,34 +172,9 @@ public class MapSearch
 
         // STEP 2: Priorities found targets.
 
-        PriorityQueue<TileReward> targetRewards = new PriorityQueue<>();
-
-        int reward, currentReward;
-
-        for(MapTile tile : coastalTiles) {
-            currentReward = -1;
-            MapTile[] harbourTiles = findHabourTiles(map, tile, false, true);
-            for(MapTile harbour : harbourTiles) {
-                if(harbour.getZone() == map.getPlayer().getTile().getZone()) continue;
-                MapTile[] path = getPath(map, tile, harbour, false, true, true);
-                if(path == null || (path.length - 1) > map.getPlayer().numOfTool(Tool.STONE)) continue;
-                reward = (harbour.zoneReward() + harbour.zoneSize()) / path.length;
-                if(reward > currentReward) currentReward = reward;
-            }
-            if(currentReward == -1) continue;
-            targetRewards.add(new TileReward(tile, currentReward));
-        }
-
-        // STEP 3: Return as array of targets.
-
-        MapTile[] targets = new MapTile[targetRewards.size()];
-        Iterator iterator = targetRewards.iterator();
-
-        for (int i = 0; i < targets.length; i++) {
-            targets[i] = ((TileReward) iterator.next()).getTile();
-        }
-
-        return targets;
+        StoneTargetPT pt = new StoneTargetPT(map);
+        pt.addTiles(coastalTiles);
+        return pt.toArray();
     }
 
     /*
@@ -339,7 +238,7 @@ public class MapSearch
     }
     */
 
-    private static int numUnexploredTilesNearby(Map map, MapTile origin, int radius)
+    public static int numUnexploredTilesNearby(Map map, MapTile origin, int radius)
     {
         int count = 0;
 
@@ -360,7 +259,7 @@ public class MapSearch
 
         return count;
     }
-    private static int numUnexploredTilesNearby(Map map, MapTile origin)
+    public static int numUnexploredTilesNearby(Map map, MapTile origin)
     {
         int radius = Math.max(Map.VIEW_WIDTH/2, Map.VIEW_HEIGHT/2);
         return numUnexploredTilesNearby(map, origin, radius);

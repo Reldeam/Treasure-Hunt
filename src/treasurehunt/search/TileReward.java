@@ -2,6 +2,10 @@ package treasurehunt.search;
 
 import treasurehunt.map.MapTile;
 
+/**
+ * A way to compare MapTile based on arbitrary rewards. TileReward can then be
+ * easily sorted into any Collection that is ordered.
+ */
 public class TileReward implements Comparable<TileReward>
 {
     private final MapTile tile;

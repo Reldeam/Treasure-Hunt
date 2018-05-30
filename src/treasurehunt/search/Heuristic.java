@@ -4,8 +4,23 @@ import treasurehunt.constant.Direction;
 import treasurehunt.map.MapPosition;
 import treasurehunt.map.MapTile;
 
+/**
+ * A collection of search heuristics for use with search algorithms that require
+ * heuristics.
+ */
 public class Heuristic
 {
+    /**
+     * The distance heuristic attempts to find the minimum number of moves
+     * (including LEFT and RIGHT) that would be required to go from the start
+     * MapTile to the finish MapTile.
+     *
+     * @param start The starting position.
+     * @param finish The goal position.
+     * @param startDirection The direction the player is facing on the start
+     *                       position.
+     * @return The minimum number of move to get the the target destination.
+     */
     public static int distance(MapPosition start, MapPosition finish, Direction startDirection)
     {
         int xDis = finish.getX() - start.getX();
@@ -36,7 +51,6 @@ public class Heuristic
 
         return Math.abs(xDis) + Math.abs(yDis) + turns;
     }
-
     public static int distance(MapTile start, MapTile finish, Direction startDirection)
     {
         return distance(start.getPosition(), finish.getPosition(), startDirection);

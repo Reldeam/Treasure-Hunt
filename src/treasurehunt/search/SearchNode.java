@@ -1,5 +1,10 @@
 package treasurehunt.search;
 
+/**
+ * A generic SearchNode that can be used for Dijkstra style search algorithms.
+ *
+ * @param <T> The type of value (node) that is being searched through.
+ */
 public abstract class SearchNode<T> implements Comparable<SearchNode>
 {
     private T value;

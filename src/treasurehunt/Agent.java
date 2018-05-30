@@ -36,6 +36,12 @@ public class Agent
 		//return get_manual_action();
 	}
 
+	/**
+	 * Will return the next action the agent will make based on AI.
+	 *
+	 * @return The next action in the form of a character, i.e. 'f', 'l', 'r',
+	 * 'c', or 'u'.
+	 */
 	private char get_automatic_action()
 	{
 		if(task == null || task.isFinished()) getTask();
@@ -80,6 +86,13 @@ public class Agent
 		return 0;
 	}
 
+	/**
+	 * Gets the next task that the AI agent will perform. The tasks that the
+	 * agent can perform are based on the behaviours listed in Behaviour enum.
+	 *
+	 * This method is the main logic algorithm that decides which task to perform
+	 * depending on the agent's current situation and world model.
+	 */
 	private void getTask()
 	{
 		task = null;
@@ -139,6 +152,23 @@ public class Agent
 		}
 	}
 
+	/**
+	 * Attempts to construct a Task based on the given choice of Behaviour as
+	 * well as several contraints that will alter how the Behaviour is carried
+	 * out.
+	 *
+	 * @param behaviour The behaviour to attempt to do.
+	 * @param tool One of the constraints specifically related to the GET_TOOL
+	 *             behaviour.
+	 * @param avoidWater Whether to avoid water while carrying out this task.
+	 *                   This constraint has no effect if the agent is already
+	 *                   on the water.
+	 * @param avoidTrees Whether to avoid cutting down trees while performing
+	 *                   the behaviour.
+	 * @param avoidStones Whether to avoid picking up stepping stones while
+	 *                    performing the behaviour.
+	 * @return
+	 */
 	private Task buildTask(Behaviour behaviour, Tool tool, boolean avoidWater, boolean avoidTrees, boolean avoidStones)
 	{
 		MapTile[] targets;
@@ -206,6 +236,24 @@ public class Agent
 		return buildTask(behaviour, false, false, false);
 	}
 
+	/**
+	 * Attempts to construct a path from the player to one of the target's given
+	 * in the list of targets. The path that will be returned will be the first
+	 * valid path to be formed to a target while iterating through all of the
+	 * targets.
+	 *
+	 * NOTE: Since the first valid path will be returned it is advised to give
+	 * the targets in order of priority from highest to lowest.
+	 *
+	 * @param targets The target MapTile(s) to attempt to form a path to.
+	 * @param avoidWater Whether to avoid water while forming the path.
+	 * @param avoidTrees Whether to avoid cutting down trees while forming the
+	 *                    path.
+	 * @param avoidStones Whether to avoid picking up stones while forming the
+	 *                    path.
+	 * @return The first valid path to be formed or null if no valid path could
+	 * be found.
+	 */
 	private MapTile[] buildPath(MapTile[] targets, boolean avoidWater, boolean avoidTrees, boolean avoidStones)
 	{
 		MapTile[] path = null;
@@ -223,16 +271,28 @@ public class Agent
 		return path;
 	}
 
+	/**
+	 * Attempts to create an exploring task where the goal is to expand the map
+	 * by stepping in tiles that will allow the player to see new tiles.
+	 */
 	private Task explore(boolean avoidWater, boolean avoidTrees, boolean avoidStones)
 	{
 		return buildTask(Behaviour.EXPLORE, avoidWater, avoidTrees, avoidStones);
 	}
 
+	/**
+	 * Attempts to create a task where the aim to to place a stepping stone
+	 * towards another island that will give the biggest reward to the player.
+	 */
 	private Task placeStone()
 	{
 		return buildTask(Behaviour.PLACE_STONE, true, true, false);
 	}
 
+	/**
+	 * Attempts to create a task where the aim is to pick up a tool that is lying
+	 * on the ground, such as treasure, keys, axes, or stones.
+	 */
 	private Task getTool(Tool tool)
 	{
 		if(map.getPlayer().hasTool(Tool.KEY) || tool == Tool.STONE)
@@ -240,12 +300,18 @@ public class Agent
 		return buildTask(Behaviour.GET_TOOL, tool, true, false, true);
 	}
 
+	/**
+	 * Attempts to create a task where the aim is to chop down a tree.
+	 */
 	private Task chopTree()
 	{
 		if(map.getPlayer().hasTool(Tool.KEY)) return buildTask(Behaviour.CHOP_TREE, true, false, false);
 		return buildTask(Behaviour.CHOP_TREE, true, false, true);
 	}
 
+	/**
+	 * Attempts to create a task where the aim is to unlock a door.
+	 */
 	private Task unlockDoor()
 	{
 		if(!map.getPlayer().hasTool(Tool.KEY)) return null;
@@ -253,16 +319,29 @@ public class Agent
 		return buildTask(Behaviour.UNLOCK_DOOR, true, true, true);
 	}
 
+	/**
+	 * Attempts to create a task where the aim is to set sail on the high seas,
+	 * choosing the body of water that looks the biggest and most unexplored.
+	 */
 	private Task setSail()
 	{
 		return buildTask(Behaviour.SET_SAIL, true, true, true);
 	}
 
+	/**
+	 * Attempts to find a harbour to dock at which will provide the player with
+	 * the most potential reward by taking into account the potential rewards on
+	 * the new land as well as how unexplored it is or if it is possible to escape
+	 * from the land once docked there.
+	 */
 	private Task dock(boolean avoidTree)
 	{
 		return buildTask(Behaviour.DOCK, false, avoidTree, false);
 	}
 
+	/**
+	 * Attempts to go home.
+	 */
 	private Task goHome()
 	{
 		Task task = buildTask(Behaviour.GO_HOME, true, false, false);

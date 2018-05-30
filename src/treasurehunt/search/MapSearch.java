@@ -51,6 +51,7 @@ public class MapSearch
 
         HarbourPrioritiser pt = new HarbourPrioritiser(map, canEscape);
         pt.addTiles(harbourTiles);
+
         return pt.toArray();
     }
     public static MapTile[] findHabourTiles(Map map, boolean canEscape, boolean avoidTrees)

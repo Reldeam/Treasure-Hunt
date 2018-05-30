@@ -98,24 +98,24 @@ public class Map
 
 		for(MapTile neighbour : tile.getNeighbours()) {
 			if((tile.isWalkable() && neighbour.isWalkable())
-					|| (tile.isWater() && neighbour.isWater())
-					|| (tile.isWall() && neighbour.isWall())
-					|| (tile.isWilderness() && neighbour.isWilderness())) {
+			|| (tile.isWater() && neighbour.isWater())
+			|| (tile.isWall() && neighbour.isWall())
+			|| (tile.isWilderness() && neighbour.isWilderness())) {
 				tile.setZone(neighbour.getZone());
 				break;
 			}
 		}
 
-		if(tile.getZone() == -1) tile.setZone(zones++);
+		if(tile.getZone() == -1) tile.setZone(++zones);
 
 		// Finds and merges and zone discrepancies between like neighbours.
 		for(MapTile neighbour : tile.getNeighbours()) {
 			if(((tile.isWalkable() && neighbour.isWalkable())
-					|| (tile.isWater() && neighbour.isWater())
-					|| (tile.isWall() && neighbour.isWall())
-					|| (tile.isWilderness() && neighbour.isWilderness()))
-					&& (tile.getZone() != neighbour.getZone())) {
-				mergeZones(tile, neighbour);
+			|| (tile.isWater() && neighbour.isWater())
+			|| (tile.isWall() && neighbour.isWall())
+			|| (tile.isWilderness() && neighbour.isWilderness()))
+			&& (tile.getZone() != neighbour.getZone())) {
+				mergeZones(tile);
 			}
 		}
 
@@ -126,26 +126,26 @@ public class Map
 	 * Combines zones that were discovered independantly but have been later found
 	 * to be the same zone.
 	 */
-	private void mergeZones(MapTile zone1, MapTile zone2)
+	private void mergeZones(MapTile origin)
 	{
+		int newZone = ++zones;
+
 		HashSet<MapTile> expanded = new HashSet<>();
 		LinkedList<MapTile> unexpanded = new LinkedList<>();
 
-		expanded.add(zone1);
-		expanded.add(zone2);
-		unexpanded.add(zone2);
+		expanded.add(origin);
+		unexpanded.add(origin);
 
 		MapTile tile;
 
 		while((tile = unexpanded.poll()) != null) {
-			tile.setZone(zone1.getZone());
+			tile.setZone(newZone);
 			for(MapTile neighbour : tile.getNeighbours()) {
 				if(!expanded.contains(neighbour)) {
-					if(((neighbour.isWalkable() && zone1.isWalkable())
-							|| (neighbour.isWater() && zone1.isWater())
-							|| (neighbour.isWall() && zone1.isWall())
-							|| (tile.isWilderness() && neighbour.isWilderness()))
-							&& (neighbour.getZone() != zone1.getZone())) {
+					if((neighbour.isWalkable() && origin.isWalkable())
+					|| (neighbour.isWater() && origin.isWater())
+					|| (neighbour.isWall() && origin.isWall())
+					|| (neighbour.isWilderness() && origin.isWilderness())) {
 						expanded.add(neighbour);
 						unexpanded.add(neighbour);
 					}
@@ -196,7 +196,7 @@ public class Map
 					|| (player.getTile().isWall() && neighbour.isWall())
 					|| (player.getTile().isWilderness() && neighbour.isWilderness()))
 					&& (player.getTile().getZone() != neighbour.getZone())) {
-				mergeZones(player.getTile(), neighbour);
+				mergeZones(player.getTile());
 			}
 		}
 	}

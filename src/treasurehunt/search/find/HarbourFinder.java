@@ -20,7 +20,8 @@ public class HarbourFinder extends TileFinder
     {
         return(tile.getObstacle() == Obstacle.NONE
         ||(tile.getObstacle() == Obstacle.DOOR && map.getPlayer().hasTool(Tool.KEY))
-        ||(tile.getObstacle() == Obstacle.TREE && map.getPlayer().hasTool(Tool.AXE) && !avoidTrees));
+        ||(tile.getObstacle() == Obstacle.TREE && map.getPlayer().hasTool(Tool.AXE) && !avoidTrees)
+        ||(tile.getObstacle() == Obstacle.TREE && map.getPlayer().hasTool(Tool.AXE) && avoidTrees && tile.numObstaclesInZone(Obstacle.TREE) > 1));
     }
 
     @Override

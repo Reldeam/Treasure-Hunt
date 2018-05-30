@@ -220,6 +220,13 @@ public class MapTile
 	 */
 	public boolean zoneContainsTree()
 	{
+		return numObstaclesInZone(Obstacle.TREE) > 0;
+	}
+
+	public int numObstaclesInZone(Obstacle obstacle)
+	{
+		int count = 0;
+
 		LinkedList<MapTile> unexpanded = new LinkedList<>();
 		HashSet<MapTile> expanded = new HashSet<MapTile>();
 
@@ -231,14 +238,44 @@ public class MapTile
 		while((tile = unexpanded.poll()) != null) {
 			for(MapTile neighbour : tile.getNeighbours()) {
 				if(zone != neighbour.getZone()) continue;
-				if(neighbour.getObstacle() == Obstacle.TREE) return true;
+				if(neighbour.getObstacle() == obstacle) count++;
 				if(expanded.contains(neighbour)) continue;
 				expanded.add(neighbour);
 				unexpanded.add(neighbour);
 			}
 		}
 
-		return false;
+		return count;
+	}
+
+	public boolean zoneContainsTool(Tool tool)
+	{
+		return numToolsInZone(tool) > 0;
+	}
+
+	public int numToolsInZone(Tool tool)
+	{
+		int count = 0;
+
+		LinkedList<MapTile> unexpanded = new LinkedList<>();
+		HashSet<MapTile> expanded = new HashSet<MapTile>();
+
+		unexpanded.add(this);
+		expanded.add(this);
+
+		MapTile tile;
+
+		while((tile = unexpanded.poll()) != null) {
+			for(MapTile neighbour : tile.getNeighbours()) {
+				if(zone != neighbour.getZone()) continue;
+				if(neighbour.getTool() == tool) count++;
+				if(expanded.contains(neighbour)) continue;
+				expanded.add(neighbour);
+				unexpanded.add(neighbour);
+			}
+		}
+
+		return count;
 	}
 
 	/**

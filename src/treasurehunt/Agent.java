@@ -126,7 +126,7 @@ public class Agent
 			case DOCK:
 				Debug.msg("Attempting to dock...");
 				targets = MapSearch.findHabourTiles(map, true, avoidTrees);
-				if(targets == null || targets.length == 0) targets = MapSearch.findHomeHabourTiles(map);
+				if(targets == null || targets.length == 0) targets = MapSearch.findHabourTiles(map);
 				if(targets == null || targets.length == 0) targets = MapSearch.findHabourTiles(map, false, avoidTrees);
 				break;
 			case GO_HOME:

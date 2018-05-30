@@ -283,7 +283,7 @@ public class Step
     boolean silent = false;
     String mapName = "";
     char action  = 'F';
-    int maxmoves = 500;
+    int maxmoves = 1000;
     int port = 0;
     int k,m;
 

@@ -36,6 +36,50 @@ public class Agent
 		//return get_manual_action();
 	}
 
+	private char get_automatic_action()
+	{
+		if(task == null || task.isFinished()) getTask();
+		if(task == null) return 0;
+
+		Action action = task.poll();
+		if(map.update(action)) return action.getChar();
+		return 0;
+	}
+
+	private char get_manual_action()
+	{
+		int ch = 0;
+
+		System.out.print("Enter Action(s): ");
+
+		try {
+			while (ch != -1) {
+				// read character from keyboard
+				ch = System.in.read();
+
+				Action action = Action.getAction((char) ch);
+				if(!map.update(action)) continue;
+
+				switch (ch) { // if character is a valid action, return it
+					case 'F':
+					case 'L':
+					case 'R':
+					case 'C':
+					case 'U':
+					case 'f':
+					case 'l':
+					case 'r':
+					case 'c':
+					case 'u':
+						return ((char) ch);
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("IO error:" + e);
+		}
+		return 0;
+	}
+
 	private void getTask()
 	{
 		task = null;
@@ -57,7 +101,7 @@ public class Agent
 				if((task = getTool(Tool.AXE)) != null) return;
 			}
 
-			if(map.getPlayer().hasTool(Tool.KEY)) {
+			if(map.getPlayer().hasTool(Tool.KEY) || map.getPlayer().hasTool(Tool.STONE)) {
 				if((task = getTool(Tool.STONE)) != null) return;
 				if((task = unlockDoor()) != null) return;
 			}
@@ -78,6 +122,7 @@ public class Agent
 				}
 			}
 
+			if(!map.getPlayer().hasTool(Tool.RAFT) && (task = chopTree()) != null) return;
 			if(map.getPlayer().numOfTool(Tool.STONE) > 0 && (task = placeStone()) != null) return;
 
 			if(map.getPlayer().hasTool(Tool.RAFT) && (task = setSail()) != null) return;
@@ -185,7 +230,7 @@ public class Agent
 
 	private Task placeStone()
 	{
-		return buildTask(Behaviour.PLACE_STONE);
+		return buildTask(Behaviour.PLACE_STONE, true, true, false);
 	}
 
 	private Task getTool(Tool tool)
@@ -197,7 +242,7 @@ public class Agent
 
 	private Task chopTree()
 	{
-		if(map.getPlayer().hasTool(Tool.KEY)) return buildTask(Behaviour.CHOP_TREE);
+		if(map.getPlayer().hasTool(Tool.KEY)) return buildTask(Behaviour.CHOP_TREE, true, false, false);
 		return buildTask(Behaviour.CHOP_TREE, true, false, true);
 	}
 
@@ -210,7 +255,7 @@ public class Agent
 
 	private Task setSail()
 	{
-		return buildTask(Behaviour.SET_SAIL, false, true, true);
+		return buildTask(Behaviour.SET_SAIL, true, true, true);
 	}
 
 	private Task dock(boolean avoidTree)
@@ -223,53 +268,9 @@ public class Agent
 		Task task = buildTask(Behaviour.GO_HOME, true, false, false);
 		if(task != null) return task;
 
-		if(!map.getPlayer().isSailing() && map.getPlayer().hasTool(Tool.RAFT)) return buildTask(Behaviour.SET_SAIL);
+		if(!map.getPlayer().isSailing() && map.getPlayer().hasTool(Tool.RAFT)) return buildTask(Behaviour.SET_SAIL, true, false, false);
 		if(map.getPlayer().isSailing()) return buildTask(Behaviour.GO_HOME);
 		return null;
-	}
-
-	private char get_automatic_action()
-	{
-		if(task == null || task.isFinished()) getTask();
-		if(task == null) return 0;
-
-		Action action = task.poll();
-		if(map.update(action)) return action.getChar();
-		return 0;
-	}
-
-	private char get_manual_action()
-	{
-		int ch = 0;
-
-		System.out.print("Enter Action(s): ");
-
-		try {
-			while (ch != -1) {
-				// read character from keyboard
-				ch = System.in.read();
-
-				Action action = Action.getAction((char) ch);
-				if(!map.update(action)) continue;
-
-				switch (ch) { // if character is a valid action, return it
-					case 'F':
-					case 'L':
-					case 'R':
-					case 'C':
-					case 'U':
-					case 'f':
-					case 'l':
-					case 'r':
-					case 'c':
-					case 'u':
-						return ((char) ch);
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("IO error:" + e);
-		}
-		return 0;
 	}
 
 	void print_view(char view[][]) 

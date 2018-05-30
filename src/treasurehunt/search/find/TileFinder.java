@@ -1,6 +1,5 @@
 package treasurehunt.search.find;
 
-import treasurehunt.constant.Obstacle;
 import treasurehunt.map.Map;
 import treasurehunt.map.MapTile;
 

@@ -4,11 +4,9 @@ import treasurehunt.map.Map;
 import treasurehunt.map.MapTile;
 import treasurehunt.search.Heuristic;
 
-import java.util.HashSet;
-
-public class CoastalPT extends PrioritisedTiles
+public class CoastalPrioritiser extends TilePrioritiser
 {
-    public CoastalPT(Map map)
+    public CoastalPrioritiser(Map map)
     {
         super(map);
     }

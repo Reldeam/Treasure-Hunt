@@ -1,7 +1,5 @@
 package treasurehunt.search;
 
-import treasurehunt.map.MapTile;
-
 public abstract class SearchNode<T> implements Comparable<SearchNode>
 {
     private T value;

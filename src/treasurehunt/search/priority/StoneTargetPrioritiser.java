@@ -5,9 +5,9 @@ import treasurehunt.map.Map;
 import treasurehunt.map.MapTile;
 import treasurehunt.search.MapSearch;
 
-public class StoneTargetPT extends PrioritisedTiles
+public class StoneTargetPrioritiser extends TilePrioritiser
 {
-    public StoneTargetPT(Map map)
+    public StoneTargetPrioritiser(Map map)
     {
         super(map);
     }

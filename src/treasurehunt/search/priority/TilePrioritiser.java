@@ -9,11 +9,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-public abstract class PrioritisedTiles extends PriorityQueue<TileReward>
+public abstract class TilePrioritiser extends PriorityQueue<TileReward>
 {
     protected final Map map;
 
-    public PrioritisedTiles(Map map)
+    public TilePrioritiser(Map map)
     {
         this.map = map;
     }

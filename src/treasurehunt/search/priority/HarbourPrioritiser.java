@@ -4,13 +4,11 @@ import treasurehunt.map.Map;
 import treasurehunt.map.MapTile;
 import treasurehunt.search.MapSearch;
 
-import java.util.HashSet;
-
-public class HarbourPT extends PrioritisedTiles
+public class HarbourPrioritiser extends TilePrioritiser
 {
     private final boolean canEscape;
 
-    public HarbourPT(Map map, boolean canEscape)
+    public HarbourPrioritiser(Map map, boolean canEscape)
     {
         super(map);
         this.canEscape = canEscape;

@@ -45,7 +45,7 @@ public class MapSearch
         if(!start.isWater()) return null;
 
         HarbourFinder finder = new HarbourFinder(map, avoidTrees);
-        HashSet<MapTile> harbourTiles = finder.find();
+        HashSet<MapTile> harbourTiles = finder.find(start);
 
         if(harbourTiles.size() == 0) return null;
 

@@ -16,15 +16,15 @@ public abstract class TileFinder
         this.map = map;
     }
 
-    public HashSet<MapTile> find()
+    public HashSet<MapTile> find(MapTile start)
     {
         HashSet<MapTile> expanded = new HashSet<>();
         LinkedList<MapTile> unexpanded = new LinkedList<>();
 
         HashSet<MapTile> matches = new HashSet<>();
 
-        unexpanded.add(map.getPlayer().getTile());
-        expanded.add(map.getPlayer().getTile());
+        unexpanded.add(start);
+        expanded.add(start);
 
         MapTile tile;
 
@@ -40,6 +40,11 @@ public abstract class TileFinder
         }
 
         return matches;
+    }
+
+    public HashSet<MapTile> find()
+    {
+        return find(map.getPlayer().getTile());
     }
 
     protected abstract boolean validMatch(MapTile tile);

@@ -147,8 +147,10 @@ public class Agent
 			if((task = goHome()) != null) return;
 			if(map.getPlayer().isSailing() && (task = dock(true)) != null) return;
 			if(!map.getPlayer().isSailing() && (task = chopTree()) != null) return;
+			if(!map.getPlayer().hasTool(Tool.AXE) && (task = getTool(Tool.AXE)) != null) return;
+			if(!map.getPlayer().hasTool(Tool.KEY) && (task = getTool(Tool.KEY)) != null) return;
 			task = explore(false, false, false);
-
+			if((task = getTool(Tool.STONE)) != null) return;
 		}
 	}
 

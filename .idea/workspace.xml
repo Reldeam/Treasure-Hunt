@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0d1f699-3853-4757-8b45-a9a7e3fa7fef" name="Default" comment="Commenting in search package.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/10.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/9.map" />
+    <list default="true" id="f0d1f699-3853-4757-8b45-a9a7e3fa7fef" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/11.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Treasure Hunt/treasurehunt/Agent$1.class" afterPath="$PROJECT_DIR$/out/production/Treasure Hunt/treasurehunt/Agent$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Treasure Hunt/treasurehunt/Agent.class" afterPath="$PROJECT_DIR$/out/production/Treasure Hunt/treasurehunt/Agent.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/treasurehunt/Agent.java" afterPath="$PROJECT_DIR$/src/treasurehunt/Agent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/treasurehunt/map/MapTile.java" afterPath="$PROJECT_DIR$/src/treasurehunt/map/MapTile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java" afterPath="$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +23,8 @@
       <file leaf-file-name="MapTile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/MapTile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4400">
-              <caret line="357" column="77" lean-forward="false" selection-start-line="357" selection-start-column="77" selection-end-line="357" selection-end-column="77" />
+            <state relative-caret-position="143">
+              <caret line="214" column="18" lean-forward="false" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
               <folding>
                 <element signature="method#MapTile#0;class#MapTile#0" expanded="false" />
                 <element signature="method#MapTile#1;class#MapTile#0" expanded="false" />
@@ -30,7 +33,7 @@
                 <element signature="method#zoneSize#0;class#MapTile#0" expanded="false" />
                 <element signature="method#zoneTiles#0;class#MapTile#0" expanded="false" />
                 <element signature="method#zoneReward#0;class#MapTile#0" expanded="false" />
-                <element signature="method#numAdjacentZones#0;class#MapTile#0" expanded="false" />
+                <element signature="method#isAdjacentTo#0;class#MapTile#0" expanded="false" />
                 <element signature="method#zoneContainsTree#0;class#MapTile#0" expanded="false" />
                 <element signature="method#numObstaclesInZone#0;class#MapTile#0" expanded="false" />
                 <element signature="method#numToolsInZone#0;class#MapTile#0" expanded="false" />
@@ -43,48 +46,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4600">
-              <caret line="409" column="16" lean-forward="false" selection-start-line="409" selection-start-column="16" selection-end-line="409" selection-end-column="16" />
-              <folding>
-                <element signature="method#Map#0;class#Map#0" expanded="false" />
-                <element signature="method#addTile#0;class#Map#0" expanded="false" />
-                <element signature="method#mergeZones#0;class#Map#0" expanded="false" />
-                <element signature="method#update#0;class#Map#0" expanded="false" />
-                <element signature="method#update#1;class#Map#0" expanded="false" />
-                <element signature="method#updateTile#0;class#Map#0" expanded="false" />
-                <element signature="method#updateTile#1;class#Map#0" expanded="false" />
-                <element signature="method#getTiles#1;class#Map#0" expanded="false" />
-                <element signature="method#getPositions#0;class#Map#0" expanded="false" />
-                <element signature="method#getPositions#1;class#Map#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapPosition.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/MapPosition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              <folding>
-                <element signature="method#equals#0;class#MapPosition#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Agent.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Agent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/treasurehunt/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="152" column="60" lean-forward="false" selection-start-line="152" selection-start-column="60" selection-end-line="152" selection-end-column="60" />
+            <state relative-caret-position="-843">
+              <caret line="153" column="91" lean-forward="false" selection-start-line="153" selection-start-column="91" selection-end-line="153" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#get_manual_action#0;class#Agent#0" expanded="false" />
-                <element signature="method#buildTask#0;class#Agent#0" expanded="false" />
                 <element signature="method#buildTask#1;class#Agent#0" expanded="false" />
                 <element signature="method#buildTask#2;class#Agent#0" expanded="false" />
                 <element signature="method#buildPath#0;class#Agent#0" expanded="false" />
@@ -95,7 +64,6 @@
                 <element signature="method#unlockDoor#0;class#Agent#0" expanded="false" />
                 <element signature="method#setSail#0;class#Agent#0" expanded="false" />
                 <element signature="method#dock#0;class#Agent#0" expanded="false" />
-                <element signature="method#goHome#0;class#Agent#0" expanded="false" />
                 <element signature="method#print_view#0;class#Agent#0" expanded="false" />
                 <element signature="method#main#0;class#Agent#0" expanded="false" />
               </folding>
@@ -108,16 +76,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
               <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/SearchNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -139,9 +97,41 @@
       <file leaf-file-name="9.map" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/levels/9.map">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="350">
+              <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="11.map" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/levels/11.map">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapSearch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/MapSearch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="198" column="57" lean-forward="false" selection-start-line="198" selection-start-column="57" selection-end-line="198" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#findUnexploredTiles#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#findCoastalTiles#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#findHabourTiles#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#findHabourTiles#1;class#MapSearch#0" expanded="false" />
+                <element signature="method#findHabourTiles#2;class#MapSearch#0" expanded="false" />
+                <element signature="method#findHomeHabourTiles#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#findStoneTargets#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#numUnexploredTilesNearby#0;class#MapSearch#0" expanded="false" />
+                <element signature="method#numUnexploredTilesNearby#1;class#MapSearch#0" expanded="false" />
+                <element signature="method#getPath#1;class#MapSearch#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,8 +149,20 @@
       <file leaf-file-name="CoastalFinder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/find/CoastalFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="525">
               <caret line="24" column="93" lean-forward="false" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoastalPrioritiser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="635">
+              <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -199,8 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/treasurehunt/constant/View.java" />
-        <option value="$PROJECT_DIR$/levels/0.map" />
         <option value="$PROJECT_DIR$/src/treasurehunt/util/InvalidTaskException.java" />
         <option value="$PROJECT_DIR$/src/treasurehunt/search/SearchCondition.java" />
         <option value="$PROJECT_DIR$/src/treasurehunt/exception/NoTaskException.java" />
@@ -238,7 +238,6 @@
         <option value="$PROJECT_DIR$/levels/5.map" />
         <option value="$PROJECT_DIR$/src/treasurehunt/search/priority/HarbourPrioritiser.java" />
         <option value="$PROJECT_DIR$/src/treasurehunt/search/find/HarbourFinder.java" />
-        <option value="$PROJECT_DIR$/src/treasurehunt/map/MapTile.java" />
         <option value="$PROJECT_DIR$/src/treasurehunt/search/priority/StoneTargetPrioritiser.java" />
         <option value="$PROJECT_DIR$/levels/6.map" />
         <option value="$PROJECT_DIR$/levels/7.map" />
@@ -250,6 +249,9 @@
         <option value="$PROJECT_DIR$/levels/9.map" />
         <option value="$PROJECT_DIR$/levels/10.map" />
         <option value="$PROJECT_DIR$/src/treasurehunt/Agent.java" />
+        <option value="$PROJECT_DIR$/levels/11.map" />
+        <option value="$PROJECT_DIR$/src/treasurehunt/map/MapTile.java" />
+        <option value="$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java" />
       </list>
     </option>
   </component>
@@ -308,7 +310,30 @@
               <item name="Treasure-Hunt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="treasurehunt" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Treasure-Hunt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Treasure-Hunt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="treasurehunt" type="462c0819:PsiDirectoryNode" />
               <item name="search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Treasure-Hunt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Treasure-Hunt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="treasurehunt" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+              <item name="find" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Treasure-Hunt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Treasure-Hunt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="treasurehunt" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+              <item name="priority" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -497,7 +522,7 @@
       <workItem from="1527468679378" duration="5160000" />
       <workItem from="1527543476097" duration="23812000" />
       <workItem from="1527604421354" duration="29767000" />
-      <workItem from="1527682561625" duration="1534000" />
+      <workItem from="1527682561625" duration="3849000" />
     </task>
     <task id="LOCAL-00001" summary="PrioritisedTiles - Class for prioritising a collection of possible targets based on their validity and reward.">
       <created>1527636847124</created>
@@ -548,11 +573,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527665296064</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Improved Logic when player has gold.">
+      <created>1527684135619</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527684135620</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127231000" />
+    <option name="totallyTimeSpent" value="129546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -565,7 +597,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914287" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27083334" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36979166" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -634,7 +666,8 @@
     <MESSAGE value="Stone Placement Logic Improved" />
     <MESSAGE value="Stone Placement Logic Improved - Even More" />
     <MESSAGE value="Commenting in search package." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commenting in search package." />
+    <MESSAGE value="Improved Logic when player has gold." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved Logic when player has gold." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -643,7 +676,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/treasurehunt/constant/View.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
@@ -673,6 +705,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1175">
           <caret line="47" column="25" lean-forward="false" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -712,17 +745,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/priority/UnexploredPrioritiser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -730,6 +763,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
           <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -751,6 +791,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -758,6 +801,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="22" column="46" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -765,6 +811,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
           <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -821,6 +870,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -875,29 +927,9 @@
         <state relative-caret-position="410">
           <caret line="19" column="44" lean-forward="false" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#distance#0;class#Heuristic#0" expanded="false" />
             <element signature="method#distance#1;class#Heuristic#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/MapSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-790">
-          <caret line="198" column="57" lean-forward="false" selection-start-line="198" selection-start-column="57" selection-end-line="198" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#findUnexploredTiles#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#findCoastalTiles#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#findHabourTiles#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#findHabourTiles#1;class#MapSearch#0" expanded="false" />
-            <element signature="method#findHabourTiles#2;class#MapSearch#0" expanded="false" />
-            <element signature="method#findHomeHabourTiles#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#findStoneTargets#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#numUnexploredTilesNearby#0;class#MapSearch#0" expanded="false" />
-            <element signature="method#numUnexploredTilesNearby#1;class#MapSearch#0" expanded="false" />
-            <element signature="method#getPath#1;class#MapSearch#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -951,30 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/MapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4400">
-          <caret line="357" column="77" lean-forward="false" selection-start-line="357" selection-start-column="77" selection-end-line="357" selection-end-column="77" />
-          <folding>
-            <element signature="method#MapTile#0;class#MapTile#0" expanded="false" />
-            <element signature="method#MapTile#1;class#MapTile#0" expanded="false" />
-            <element signature="method#explored#0;class#MapTile#0" expanded="false" />
-            <element signature="method#updateExplored#0;class#MapTile#0" expanded="false" />
-            <element signature="method#zoneSize#0;class#MapTile#0" expanded="false" />
-            <element signature="method#zoneTiles#0;class#MapTile#0" expanded="false" />
-            <element signature="method#zoneReward#0;class#MapTile#0" expanded="false" />
-            <element signature="method#numAdjacentZones#0;class#MapTile#0" expanded="false" />
-            <element signature="method#zoneContainsTree#0;class#MapTile#0" expanded="false" />
-            <element signature="method#numObstaclesInZone#0;class#MapTile#0" expanded="false" />
-            <element signature="method#numToolsInZone#0;class#MapTile#0" expanded="false" />
-            <element signature="method#connected#0;class#MapTile#0" expanded="false" />
-            <element signature="method#getNeighbours#0;class#MapTile#0" expanded="false" />
-            <element signature="method#toString#0;class#MapTile#0" expanded="false" />
-            <element signature="method#isWalkable#0;class#MapTile#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4600">
@@ -1004,29 +1012,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/levels/8.map">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/SearchNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/find/CoastalFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="24" column="93" lean-forward="false" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1041,14 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/levels/9.map">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/levels/10.map">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -1057,14 +1039,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/levels/9.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/8.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/11.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/MapSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="198" column="57" lean-forward="false" selection-start-line="198" selection-start-column="57" selection-end-line="198" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#findUnexploredTiles#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#findCoastalTiles#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#findHabourTiles#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#findHabourTiles#1;class#MapSearch#0" expanded="false" />
+            <element signature="method#findHabourTiles#2;class#MapSearch#0" expanded="false" />
+            <element signature="method#findHomeHabourTiles#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#findStoneTargets#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#numUnexploredTilesNearby#0;class#MapSearch#0" expanded="false" />
+            <element signature="method#numUnexploredTilesNearby#1;class#MapSearch#0" expanded="false" />
+            <element signature="method#getPath#1;class#MapSearch#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/treasurehunt/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="152" column="60" lean-forward="false" selection-start-line="152" selection-start-column="60" selection-end-line="152" selection-end-column="60" />
+        <state relative-caret-position="-843">
+          <caret line="153" column="91" lean-forward="false" selection-start-line="153" selection-start-column="91" selection-end-line="153" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#get_manual_action#0;class#Agent#0" expanded="false" />
-            <element signature="method#buildTask#0;class#Agent#0" expanded="false" />
             <element signature="method#buildTask#1;class#Agent#0" expanded="false" />
             <element signature="method#buildTask#2;class#Agent#0" expanded="false" />
             <element signature="method#buildPath#0;class#Agent#0" expanded="false" />
@@ -1075,9 +1100,52 @@
             <element signature="method#unlockDoor#0;class#Agent#0" expanded="false" />
             <element signature="method#setSail#0;class#Agent#0" expanded="false" />
             <element signature="method#dock#0;class#Agent#0" expanded="false" />
-            <element signature="method#goHome#0;class#Agent#0" expanded="false" />
             <element signature="method#print_view#0;class#Agent#0" expanded="false" />
             <element signature="method#main#0;class#Agent#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/treasurehunt/map/MapTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="214" column="18" lean-forward="false" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
+          <folding>
+            <element signature="method#MapTile#0;class#MapTile#0" expanded="false" />
+            <element signature="method#MapTile#1;class#MapTile#0" expanded="false" />
+            <element signature="method#explored#0;class#MapTile#0" expanded="false" />
+            <element signature="method#updateExplored#0;class#MapTile#0" expanded="false" />
+            <element signature="method#zoneSize#0;class#MapTile#0" expanded="false" />
+            <element signature="method#zoneTiles#0;class#MapTile#0" expanded="false" />
+            <element signature="method#zoneReward#0;class#MapTile#0" expanded="false" />
+            <element signature="method#isAdjacentTo#0;class#MapTile#0" expanded="false" />
+            <element signature="method#zoneContainsTree#0;class#MapTile#0" expanded="false" />
+            <element signature="method#numObstaclesInZone#0;class#MapTile#0" expanded="false" />
+            <element signature="method#numToolsInZone#0;class#MapTile#0" expanded="false" />
+            <element signature="method#connected#0;class#MapTile#0" expanded="false" />
+            <element signature="method#getNeighbours#0;class#MapTile#0" expanded="false" />
+            <element signature="method#toString#0;class#MapTile#0" expanded="false" />
+            <element signature="method#isWalkable#0;class#MapTile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/find/CoastalFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="24" column="93" lean-forward="false" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/treasurehunt/search/priority/CoastalPrioritiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

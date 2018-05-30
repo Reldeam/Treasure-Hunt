@@ -151,6 +151,7 @@ public class Agent
 			if(!map.getPlayer().hasTool(Tool.KEY) && (task = getTool(Tool.KEY)) != null) return;
 			task = explore(false, false, false);
 			if((task = getTool(Tool.STONE)) != null) return;
+			if(map.getPlayer().hasTool(Tool.STONE) && (task = placeStone()) == null) return;
 		}
 	}
 

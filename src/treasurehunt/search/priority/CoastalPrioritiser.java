@@ -1,6 +1,8 @@
 package treasurehunt.search.priority;
 
+import treasurehunt.constant.Tool;
 import treasurehunt.map.Map;
+import treasurehunt.map.MapPosition;
 import treasurehunt.map.MapTile;
 import treasurehunt.search.Heuristic;
 
@@ -21,7 +23,14 @@ public class CoastalPrioritiser extends TilePrioritiser
             if (zoneTile.isExplored()) numExplored++;
         }
 
-        return (zoneTiles.length - numExplored) + (tile.numAdjacentZones() - 1) / Heuristic.distance(map.getPlayer().getTile(), tile, map.getPlayer().getDirection());
+        int reward = (zoneTiles.length - numExplored) + (tile.numAdjacentZones() - 1) / Heuristic.distance(map.getPlayer().getTile(), tile, map.getPlayer().getDirection());
+
+        int homeZone = map.getTile(new MapPosition(0, 0)).getZone();
+
+        if(map.getPlayer().hasTool(Tool.GOLD) && tile.isAdjacentTo(homeZone))
+            reward += Map.MAX_WIDTH * Map.MAX_HEIGHT;
+
+        return reward;
     }
 
     @Override

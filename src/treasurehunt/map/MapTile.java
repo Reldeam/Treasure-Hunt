@@ -212,6 +212,31 @@ public class MapTile
 		return adjacentZones.size();
 	}
 
+	public boolean isAdjacentTo(int zone)
+	{
+		LinkedList<MapTile> unexpanded = new LinkedList<>();
+		HashSet<MapTile> expanded = new HashSet<>();
+
+		unexpanded.add(this);
+		expanded.add(this);
+
+		MapTile tile;
+
+		while((tile = unexpanded.poll()) != null) {
+			for(MapTile neighbour : tile.getNeighbours()) {
+				if(expanded.contains(neighbour)) continue;
+				if(this.zone != neighbour.getZone()) {
+					if(neighbour.getZone() == zone) return true;
+					continue;
+				}
+				unexpanded.add(neighbour);
+				expanded.add(neighbour);
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * Finds whether the zone contains a tree.
 	 *
